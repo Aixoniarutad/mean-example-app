@@ -1,28 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="meanApp">
 <head>
 	<title>Mean App Example</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/custom.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/custom.css">
+	<link rel="stylesheet" type="text/css" href="app/home/home.css">
+	<link rel="stylesheet" type="text/css" href="app/shared/directives/app-navigation/app-navigation.css">
 </head>
 <body>
 
-	<h1>Mean App Homepage</h1>
+	<!-- Header -->
+	<div>
+		<app-navigation></app-navigation>
+	</div>
 
+	<!--View-->
+	<div ng-view style="margin-top: 40px;"></div>
+
+	<!-- Footer -->
 	<footer class="footer">
 		<div class="container">
 				<p class="text-muted text-center">
-					<a href="http://www.google.com" target="_blank">
-						<img src="/images/logo.png" height="26px" alt="My Logo" />
+					<a ng-href="#/">
+						<img src="assets/images/logo.png" height="26px" alt="My Logo" />
 					</a>
 				</p>
-
 				<p class="text-muted text-center">
 					<small>&copy; 2017 Antonio Cicero</small>
 				</p>
 		</div>
 	</footer>
 
-	<script src="jquery/jquery-3.1.1.min.js"></script>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-route/angular-route.min.js"></script>
+
+	<!--App-->
+	<script src="app/app.js"></script>
+	<script src="app/app.routes.js"></script>
+	<script src="app/app.interceptor.js"></script>
+	<script src="app/shared/services/auth.service.js"></script>
+	<script src="app/shared/services/session.service.js"></script>
+	<script src="app/shared/directives/app-navigation/app-navigation.directive.js"></script>
+	<script src="app/register/register.controller.js"></script>
+	<script src="app/profile/profile.controller.js"></script>
+	<script src="app/hotels/hotels-list.controller.js"></script>
+	<script src="app/hotels/hotels-detail.controller.js"></script>
+	<script src="app/hotels/hotels-data-factory.js"></script>
+	<script src="app/hotels/directives/star-rating.directive.js"></script>
 </body>
 </html>

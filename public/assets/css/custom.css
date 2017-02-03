@@ -1,0 +1,17 @@
+html {
+	position: relative;
+	min-height: 100%;
+}
+body {
+	/* Margin bottom by footer height */
+	margin-bottom: 90px;
+}
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* footer height */
+	height: 90px;
+	background-color: #e0e0e0;
+	padding-top: 20px;
+}

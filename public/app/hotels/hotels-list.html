@@ -1,0 +1,11 @@
+<div id="hotel-list-section">
+
+	<div class="container">
+		<h1>Hotel List</h1>
+		<ul>
+			<li ng-repeat="hotel in vm.hotels">
+				<h5><a ng-href="#/hotels/{{ hotel._id }}">{{ hotel.name }}</a></h5>
+			</li>
+		</ul>
+	</div>
+</div>

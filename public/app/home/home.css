@@ -1,0 +1,16 @@
+#home-section {
+  padding-top: 40px;
+  padding-bottom: 40px;
+	background-color: white;
+
+  position: absolute;
+       top: 40px; /* Header Height */
+       bottom: 90px; /* Footer Height */
+       width: 100%;
+}
+#home-section .intro-text {
+	padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 1.5em;
+  color: #4e5d6c;
+}
