@@ -1,14 +1,15 @@
-angular.module('meanApp').component('appNavigation', {
-	templateUrl: 'app/shared/directives/app-navigation/app-navigation.html',
-	controller: NavController,
-	controllerAs: 'vm'
+angular.module('meanApp').directive('appNavigation', function(){
+	return {
+		templateUrl: 'app/shared/directives/app-navigation/app-navigation.html',
+		controller: NavController,
+		controllerAs: 'vm'
+	};
 });
 
 function NavController($location, auth, session) {
 	var vm = this;
+	vm.user = session.getUser();
 	vm.logIn = logIn;
-	vm.logOut = logOut;
-	vm.isLoggedIn = isLoggedIn;
 	vm.isActiveTab = isActiveTab;
 
 	function logIn() {
@@ -19,14 +20,6 @@ function NavController($location, auth, session) {
 		auth.logIn(user).then(function (response) {
 			console.log('Logging in:', response);
 		});
-	};
-
-	function logOut() {
-		return auth.logOut();
-	};
-
-	function isLoggedIn() {
-		return session.isLoggedIn();
 	};
 
 	function isActiveTab(url) {

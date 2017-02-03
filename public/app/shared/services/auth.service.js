@@ -2,11 +2,21 @@ angular.module('meanApp').factory('auth', AuthFactory);
 
 function AuthFactory($http, $location, session) {
 	var service = {
+		isLoggedIn: isLoggedIn,
 		register: register,
 		logIn: logIn,
 		logOut: logOut
 	};
 	return service;
+
+	/**
+	* Check whether the user is logged in
+	* @returns boolean
+	*/
+	function isLoggedIn() {
+		var user = session.getUser();
+		return true ? user : false;
+	};
 
 	/**
 	* Register
@@ -19,8 +29,6 @@ function AuthFactory($http, $location, session) {
 			.post('/api/users/register', user)
 			.then(function (response) {
 				var data = response.data;
-				session.setUser(data.user);
-				session.setAccessToken(data.token);
 				return data;
 			});
 	};
@@ -38,6 +46,7 @@ function AuthFactory($http, $location, session) {
 				var data = response.data;
 				session.setUser(data.user);
 				session.setAccessToken(data.token);
+				$location.path('/profile');
 				return data;
 			});
 	};
@@ -48,7 +57,7 @@ function AuthFactory($http, $location, session) {
 	* @returns {*|Promise}
 	*/
 	function logOut() {
-		console.log('Loggin out');
+		console.log('Logging out.');
 		session.destroy();
 		$location.path('/');
 	};

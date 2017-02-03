@@ -2,14 +2,10 @@ angular.module('meanApp').factory('session', SessionFactory);
 
 function SessionFactory($log, $window) {
 	// Instantiate data when service is loaded
-	var localStorage = $window.localStorage;
-	var _user = localStorage.getItem('session.user');
-	var _accessToken = localStorage.getItem('session.accessToken');
-	console.log('_user', _user);
-	console.log('_accessToken', _accessToken);
+	var _user = JSON.parse($window.localStorage.getItem('session.user'));
+	var _accessToken = JSON.parse($window.localStorage.getItem('session.accessToken'));
 
 	var service = {
-		isLoggedIn: isLoggedIn,
 		getUser: getUser,
 		setUser: setUser,
 		getAccessToken: getAccessToken,
@@ -18,21 +14,13 @@ function SessionFactory($log, $window) {
 	};
 	return service;
 
-	/**
-	* Check whether the user is logged in
-	* @returns boolean
-	*/
-	function isLoggedIn() {
-		return _user !== null;
-	};
-
 	function getUser() {
 		return _user;
 	};
 
 	function setUser(user) {
 		_user = user;
-		localStorage.setItem('session.user', JSON.stringify(user));
+		$window.localStorage.setItem('session.user', JSON.stringify(user));
 		return;
 	};
 
@@ -42,7 +30,7 @@ function SessionFactory($log, $window) {
 
 	function setAccessToken(token) {
 		_accessToken = token;
-		localStorage.setItem('session.accessToken', token);
+		$window.localStorage.setItem('session.accessToken', JSON.stringify(token));
 		return;
 	};
 
@@ -52,5 +40,7 @@ function SessionFactory($log, $window) {
 	function destroy() {
 		setUser(null);
 		setAccessToken(null);
+		$window.localStorage.removeItem('session.user');
+		$window.localStorage.removeItem('session.accessToken');
 	};
 };

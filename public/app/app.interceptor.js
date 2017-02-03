@@ -17,10 +17,7 @@ function AuthInterceptor($location, $q, $window, session) {
 	}
 
 	function response(response) {
-		if (response.status === 200 && session.getAccessToken() && !session.isLoggedIn()) {
-
-		}
-		if (response.status === 401) {
+		if (response.status === 401 || response.status === 403) {
 			session.destroy();
 			$location.path('/');
 		}
