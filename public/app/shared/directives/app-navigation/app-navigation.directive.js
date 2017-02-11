@@ -1,4 +1,4 @@
-angular.module('meanApp').directive('appNavigation', function(){
+angular.module('meanApp').directive('appNavigation', function () {
 	return {
 		templateUrl: 'app/shared/directives/app-navigation/app-navigation.html',
 		controller: NavController,

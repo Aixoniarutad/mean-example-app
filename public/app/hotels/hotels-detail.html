@@ -1,46 +1,45 @@
 <div id="hotel-detail-section">
 
-  <div class="container">
-    <!--Breadcrumbs-->
-    <br>
-    <div class="col-xs-12">
-      <ul class="breadcrumb">
-        <li><a ng-href="#/hotels">Hotels</a></li>
-        <li class="active">{{ vm.hotel.name }}</li>
-      </ul>
-    </div>
+	<div class="container">
+		<!--Breadcrumbs-->
+		<br>
+		<div class="col-xs-12">
+			<ul class="breadcrumb">
+				<li><a ng-href="#/hotels">Hotels</a></li>
+				<li class="active">{{ vm.hotel.name }}</li>
+			</ul>
+		</div>
 
+		<!--Hotel Details-->
+		<div class="col-xs-12">
+			<h2>{{ vm.hotel.name }}</h2>
+			<star-rating score="vm.hotel.stars"></star-rating>
+			<p>{{ vm.hotel.description }}</p>
+			<div>
+				<h4>Services</h4>
+				<ul>
+					<li ng-repeat="service in vm.hotel.services">{{ service }}</li>
+				</ul>
+			</div>
 
-    <!--Hotel Details-->
-    <div class="col-xs-12">
-      <h2>{{ vm.hotel.name }}</h2>
-      <star-rating score="vm.hotel.stars"></star-rating>
-      <p>{{ vm.hotel.description }}</p>
-      <div>
-        <h4>Services</h4>
-        <ul>
-          <li ng-repeat="service in vm.hotel.services">{{ service }}</li>
-        </ul>
-      </div>
+			<div>
+				<h4>Reviews</h4>
+				<div class="media" ng-repeat="review in vm.hotel.reviews">
+					<div class="media-left">
+						<img src="assets/images/avatar_img.png" class="media-object" style="width:60px">
+					</div>
+					<div class="media-body">
+						<h5 class="media-heading">{{ review.name }} - <small>{{ review.createdOn | date:'longDate' }}</small></h5>
+						<div>
+							<star-rating score="vm.hotel.stars"></star-rating>
+						</div>
+						<p>{{ review.review }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
 
-      <div>
-        <h4>Reviews</h4>
-        <div class="media" ng-repeat="review in vm.hotel.reviews">
-          <div class="media-left">
-            <img src="assets/images/avatar_img.png" class="media-object" style="width:60px">
-          </div>
-          <div class="media-body">
-            <h5 class="media-heading">{{ review.name }} - <small>{{ review.createdOn | date:'longDate' }}</small></h5>
-            <div>
-              <star-rating score="vm.hotel.stars"></star-rating>
-            </div>
-            <p>{{ review.review }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!--Review Form-->
+		<!--Review Form-->
 		<form class="col-xs-12 col-lg-5" name="vm.reviewForm" ng-submit="vm.addReview()" style="padding-bottom: 15px;">
 			<h3>Leave a review</h3>
 			<div class="form-group">
@@ -70,5 +69,5 @@
 			<button type="submit" class="btn btn-default">Add review</button>
 		</form>
 
-  </div>
+	</div>
 </div>

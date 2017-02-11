@@ -11,7 +11,7 @@ app.set('PORT', 3000);
 app.set('json spaces', 2);
 
 // Logging
-app.use(function(req, res, next){
+app.use(function (req, res, next) {
 	console.log(req.method, req.url);
 	next();
 });
@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 app.use('/api', routes);
 
 // Start server and listen to requests
-var server = app.listen(app.get('PORT'), function(){
+var server = app.listen(app.get('PORT'), function () {
 	var port = server.address().port;
 	console.log('Listening on port: ' + port);
 });

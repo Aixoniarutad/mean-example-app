@@ -16,11 +16,12 @@ function HotelListCtrl($routeParams, HotelFactory) {
 	};
 
 	function getAllHotels() {
-		HotelFactory.getAllHotels(offset, count).then(function (response) {
-			vm.hotels = response.data;
-		})
-		.catch(function (err) {
-			console.log(err);
-		});
+		HotelFactory.getAllHotels(offset, count)
+			.then(function (response) {
+				vm.hotels = response.data;
+			})
+			.catch(function (err) {
+				console.log(err);
+			});
 	};
 };
